@@ -1,0 +1,15 @@
+name: Setup Java JDK
+description: Setup Java JDK
+inputs:
+  jdkVersion:
+    description: JDK Version
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ inputs.jdkVersion }}
+        distribution: 'oracle'
+        cache: maven

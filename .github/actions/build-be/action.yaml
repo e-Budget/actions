@@ -1,0 +1,20 @@
+name: Build e-Budget Back-end Services
+description: Build and analyze e-Budget Back-end with Sonar Qube
+inputs:
+  sonarToken:
+    description: Sonar Qube Token
+    required: true
+  sonarProjectKey:
+    description: Sonar Qube Project Key
+    required: true
+  serviceName:
+    description: e-Budget Back-end Service Name
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Build and analyze e-Budget Back-end Service
+      env:
+        SONAR_TOKEN: ${{ inputs.sonarToken }}
+      run: cd ${{ inputs.serviceName }} && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=e-Budget_${{ inputs.sonarProjectKey }}
+      shell: bash
