@@ -1,0 +1,21 @@
+name: Build e-Budget FE
+description: Build e-Budget FE with NPM
+inputs:
+  nodeVersion:
+    description: Node Version
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: {{ inputs.nodeVersion }}
+    - name: Install FE dependencies
+      run: npm install
+      shell: bash
+    - name: Run FE Tests
+      run: npm run test -- --coverage
+      shell: bash
+    - name: Build FE
+      run: npm run build
+      shell: bash
