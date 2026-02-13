@@ -14,7 +14,7 @@ runs:
       run: npm install
       shell: bash
     - name: Run FE Tests
-      run: npm run test -- --coverage
+      run: npm run test -- --no-watch --coverage
       shell: bash
     - name: Build FE
       run: npm run build
